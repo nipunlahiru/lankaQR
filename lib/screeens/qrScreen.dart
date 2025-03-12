@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lankaqr/screeens/home1.dart';
+import 'qr_scanner_screen.dart'; // Import the new QR scanner screen
 
-class Qrscreen extends StatelessWidget {
-  const Qrscreen({super.key});
+class Qrscreen extends StatefulWidget {
+  Qrscreen({super.key});
 
+  @override
+  State<Qrscreen> createState() => _QrscreenState();
+}
+
+class _QrscreenState extends State<Qrscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +37,6 @@ class Qrscreen extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     Positioned.fill(
-                      // Positioned.fill() is used to position the child widget to fill the parent widget.
                       child: Image.asset(
                         'assets/index.png',
                         fit: BoxFit.cover,
@@ -39,10 +44,24 @@ class Qrscreen extends StatelessWidget {
                     ),
                     Positioned(
                       top: 150,
-                      child: Image.asset(
-                        'assets/qr.png',
-                        height: 300,
-                        width: 300,
+                      child: GestureDetector(
+                        onTap: () async {
+                          final result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QrScannerScreen(),
+                            ),
+                          );
+                          if (result != null) {
+                            // Handle the scanned QR code result
+                            print('Scanned QR code: $result');
+                          }
+                        },
+                        child: Image.asset(
+                          'assets/qr.png',
+                          height: 300,
+                          width: 300,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -56,7 +75,7 @@ class Qrscreen extends StatelessWidget {
                           width: 50,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(5),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),

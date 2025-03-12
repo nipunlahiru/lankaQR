@@ -84,7 +84,7 @@ class Home1 extends StatelessWidget {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const Qrscreen();
+                            return  Qrscreen();
                           }));
                         },
                         child: Container(
@@ -110,13 +110,23 @@ class Home1 extends StatelessWidget {
                                 Image.asset('assets/qr.png',
                                     height: 70, width: 70),
                                 const SizedBox(height: 10),
-                                const Text(
-                                  'Scan QR Code',
+                                RichText(
+                                    text: const TextSpan(
+                                  text: "Scan",
                                   style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                      fontSize: 20, color: Color(0xFF201B51)),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text: " QR ",
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.red)),
+                                    TextSpan(
+                                        text: "code ",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Color(0xFF201B51)))
+                                  ],
+                                ))
                               ],
                             ),
                           ),
@@ -127,17 +137,17 @@ class Home1 extends StatelessWidget {
                     const SizedBox(height: 20),
                     const Text(
                       "Scan QR from the gallery",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20, color: Color(0xFF201B51)),
                     ),
                     const Text(
                       "Once upload the Qr to the App you will be   ",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 10, color: Color(0xFF201B51)),
                     ),
                     const Text(
                       "redirected to the  result screen    ",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 10, color: Color(0xFF201B51)),
                     ),
 
                     const SizedBox(height: 20),

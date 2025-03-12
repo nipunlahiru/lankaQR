@@ -35,7 +35,7 @@ class Result extends StatelessWidget {
           ),
           const SizedBox(height: 40),
           Image.asset(
-            'assets/power-off.png',
+            'assets/close.png',
             height: 100,
             width: 100,
           ),
