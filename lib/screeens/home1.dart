@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lankaqr/screeens/list.dart';
 import 'package:lankaqr/screeens/qrScreen.dart';
 import 'package:lankaqr/screeens/scanResult.dart';
 
@@ -84,7 +85,7 @@ class Home1 extends StatelessWidget {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return  Qrscreen();
+                            return Qrscreen();
                           }));
                         },
                         child: Container(
@@ -186,25 +187,33 @@ class Home1 extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.6),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                          ),
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image.asset('assets/upload.png',
-                                height: 5, width: 5),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ListPage();
+                            }));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.6),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image.asset('assets/upload.png',
+                                  height: 5, width: 5),
+                            ),
                           ),
                         ),
                       ],

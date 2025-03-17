@@ -2,9 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:lankaqr/components/myListtile.dart';
 import 'package:lankaqr/screeens/home1.dart';
 import 'package:lankaqr/screeens/qrScreen.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class ListPage extends StatelessWidget {
+class ListPage extends StatefulWidget {
   const ListPage({super.key});
+
+  @override
+  State<ListPage> createState() => _ListPageState();
+}
+
+class _ListPageState extends State<ListPage> {
+//intialize the webview controller
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setNavigationDelegate(
+      NavigationDelegate(
+        onProgress: (int progress) {
+          // Update loading bar.
+        },
+        onPageStarted: (String url) {},
+        onPageFinished: (String url) {},
+        onHttpError: (HttpResponseError error) {},
+        onWebResourceError: (WebResourceError error) {},
+        onNavigationRequest: (NavigationRequest request) {
+          if (request.url.startsWith('https://www.youtube.com/')) {
+            return NavigationDecision.prevent;
+          }
+          return NavigationDecision.navigate;
+        },
+      ),
+    )
+    ..loadRequest(Uri.parse('https://flutter.dev/'));
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +75,9 @@ class ListPage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Padding(
+              child: WebViewWidget(controller: controller),
+
+              /*Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView(
                   children: const [
@@ -78,7 +108,7 @@ class ListPage extends StatelessWidget {
                         length: 5),
                   ],
                 ),
-              ),
+              ),*/
             ),
           ),
           const SizedBox(height: 20),
@@ -96,7 +126,7 @@ class ListPage extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return  Qrscreen();
+                    return Qrscreen();
                   }));
                 },
                 child: Container(

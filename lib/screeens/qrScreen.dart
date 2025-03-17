@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lankaqr/screeens/home1.dart';
-import 'qr_scanner_screen.dart'; // Import the new QR scanner screen
+import 'qr_scanner_screen.dart'; // 
 
 class Qrscreen extends StatefulWidget {
   Qrscreen({super.key});
